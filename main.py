@@ -163,3 +163,19 @@ reviews = [
 @app.get("/reviews")
 def get_reviews():
     return reviews
+faq = [
+    {
+        "id": 1,
+        "question": "How do I compare book prices?",
+        "answer": "Search for a book and compare prices from different sellers.",
+    },
+    {
+        "id": 2,
+        "question": "Can I save books for later?",
+        "answer": "Yes, you can add books to your wishlist.",
+    },
+]
+
+@app.get("/faq")
+def get_faq():
+    return faq
