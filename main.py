@@ -35,6 +35,24 @@ products = [
     },
 ]
 
+sellers = [
+    {
+        "id": 1,
+        "name": "ABC Book Store",
+        "location": "Chennai",
+    },
+    {
+        "id": 2,
+        "name": "Readers Hub",
+        "location": "Coimbatore",
+    },
+    {
+        "id": 3,
+        "name": "Knowledge Mart",
+        "location": "Madurai",
+    },
+]
+
 
 @app.get("/")
 def home():
@@ -78,3 +96,22 @@ def get_categories():
         "Finance",
         "Motivation",
     ]
+
+
+@app.get("/sellers")
+def get_sellers():
+    return sellers
+wishlist = [
+    {
+        "id": 1,
+        "name": "Atomic Habits",
+    },
+    {
+        "id": 2,
+        "name": "Rich Dad Poor Dad",
+    },
+]
+
+@app.get("/wishlist")
+def get_wishlist():
+    return wishlist
