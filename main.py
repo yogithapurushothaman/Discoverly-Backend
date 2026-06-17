@@ -145,3 +145,21 @@ notifications = [
 @app.get("/notifications")
 def get_notifications():
     return notifications
+reviews = [
+    {
+        "id": 1,
+        "book": "Atomic Habits",
+        "rating": 5,
+        "comment": "Excellent read!",
+    },
+    {
+        "id": 2,
+        "book": "Rich Dad Poor Dad",
+        "rating": 4,
+        "comment": "Very insightful.",
+    },
+]
+
+@app.get("/reviews")
+def get_reviews():
+    return reviews
