@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
@@ -11,6 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Sample product data
 products = [
     {
         "id": 1,
@@ -33,6 +35,7 @@ products = [
 ]
 
 
+# Home API
 @app.get("/")
 def home():
     return {
@@ -40,11 +43,22 @@ def home():
     }
 
 
+# Health Check API
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy",
+        "service": "Discoverly Backend"
+    }
+
+
+# Get all products
 @app.get("/products")
 def get_products():
     return products
 
 
+# Get a product by ID
 @app.get("/products/{product_id}")
 def get_product(product_id: int):
     for product in products:
@@ -54,3 +68,13 @@ def get_product(product_id: int):
     return {
         "message": "Product not found"
     }
+
+
+# Search products by name
+@app.get("/search")
+def search_products(q: str = Query("")):
+    return [
+        product
+        for product in products
+        if q.lower() in product["name"].lower()
+    ]
