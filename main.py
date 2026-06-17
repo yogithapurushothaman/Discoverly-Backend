@@ -115,3 +115,33 @@ wishlist = [
 @app.get("/wishlist")
 def get_wishlist():
     return wishlist
+orders = [
+    {
+        "id": 1,
+        "book": "Atomic Habits",
+        "status": "Delivered",
+    },
+    {
+        "id": 2,
+        "book": "Rich Dad Poor Dad",
+        "status": "Processing",
+    },
+]
+
+@app.get("/orders")
+def get_orders():
+    return orders
+notifications = [
+    {
+        "id": 1,
+        "message": "Your order for Atomic Habits has been delivered.",
+    },
+    {
+        "id": 2,
+        "message": "Price dropped for Rich Dad Poor Dad.",
+    },
+]
+
+@app.get("/notifications")
+def get_notifications():
+    return notifications
